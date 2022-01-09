@@ -1,0 +1,297 @@
+/*****************************************************
+                         VARS                           
+*****************************************************/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/*****************************************************
+                         HELPERS                           
+*****************************************************/
+.visible {
+  visibility: visible !important;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+/*****************************************************
+                         MAIN STYLES                           
+*****************************************************/
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  margin: 0;
+  font-size: 15px;
+  background: url("../img/bg-pattern.svg") top left no-repeat #fafbff;
+  background-size: 100% auto;
+  font-family: "Manrope", sans-serif;
+}
+
+main {
+  width: fit-content;
+  flex-direction: column;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: url("./../img/pattern-circles.svg") center center;
+  background-repeat: no-repeat;
+  padding: 1.5rem 0;
+}
+
+header h1 {
+  margin-bottom: 0;
+  font-weight: 800;
+}
+
+header h2 {
+  color: #858fad;
+  font-size: 0.8rem;
+}
+
+.pricing {
+  background: white;
+  min-width: 530px;
+  border-radius: .5rem;
+  margin: 2rem 1rem 1rem 1rem;
+  box-shadow: 0 5px 10px 5px #eaeefb;
+}
+
+.pricing__headings {
+  color: #858fad;
+  display: grid;
+  grid-template-areas: "views price" "slider slider";
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 2rem;
+}
+
+.pricing__slider {
+  grid-area: slider;
+  margin: 1rem 0 2.5rem;
+}
+
+.pricing__range {
+  cursor: ew-resize;
+  -webkit-appearance: none;
+  appearance: none;
+  background: #eaeefb;
+  height: 7px;
+  border-radius: 1rem;
+  background: linear-gradient(to right, #a5f3eb 0%, #a5f3eb 50%, #eaeefb 50%, #eaeefb 100%);
+}
+
+.pricing__range::-webkit-slider-thumb {
+  box-shadow: 0 4px 12px 0px #10d5c2;
+  appearance: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: url("../img/icon-slider.svg") no-repeat #10d5c2 center center;
+  background-size: 55%;
+}
+
+.pricing__toggle {
+  border-radius: 1rem;
+  background: #eaeefb;
+  width: 40px;
+  height: 23px;
+  position: relative;
+}
+
+.pricing__toggle::before {
+  content: "";
+  transition: 0.3s all ease-in-out;
+  display: block;
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: white;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 10%;
+}
+
+.pricing__toggle:hover {
+  cursor: pointer;
+}
+
+.pricing__toggle.active {
+  background: #10d5c2;
+}
+
+.pricing__toggle.active::before {
+  transition: 0.3s all ease-in-out;
+  left: 50%;
+}
+
+.pricing__benefits {
+  list-style-image: url("./../img/icon-check.svg");
+  list-style-position: inside;
+  padding: 0;
+  color: #858fad;
+  text-align: center;
+}
+
+.pricing__range {
+  width: 100%;
+}
+
+.pricing__trial {
+  display: flex;
+  justify-content: center;
+  color: #bdccff;
+  background: #293356;
+  border: 0;
+  padding: 0.8rem 3rem;
+  border-radius: 2rem;
+  font-weight: 600;
+  margin-left: auto;
+}
+
+.pricing__trial:hover {
+  cursor: pointer;
+  color: white;
+}
+
+.pricing__billing {
+  justify-content: center;
+  color: #858fad;
+  display: flex;
+  align-items: center;
+  font-size: 0.75rem;
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.pricing__billing h3:nth-child(2) {
+  margin-left: auto;
+}
+
+.pricing__price_header {
+  grid-area: price;
+  display: flex;
+  align-items: center;
+}
+
+.pricing__view_header {
+  grid-area: views;
+  font-size: .9rem;
+  letter-spacing: 2px;
+}
+
+.pricing__price {
+  color: #293356;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.pricing__billing_text {
+  margin-left: auto;
+}
+
+.pricing__billing_yearly_text {
+  position: relative;
+}
+
+.pricing__billing_yearly_text::after {
+  content: '25% discount';
+  color: #ff8c66;
+  background-color: #feece7;
+  position: absolute;
+  border-radius: 1rem;
+  right: 2rem;
+  visibility: hidden;
+  padding: 2px 4px;
+  margin-left: 8px;
+  font-size: 0.7rem;
+  width: 13ch;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+}
+
+.pricing__billing_yearly_text.visible::after {
+  visibility: visible;
+}
+
+.pricing__billing_type {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.pricing__footer {
+  border-top: 2px solid #eaeefb;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-bottom: 2rem;
+  padding-top: 1rem;
+}
+
+.pricing__headings, .pricing__billing, .pricing__footer {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+/*****************************************************
+                         BREAKPOINTS                           
+*****************************************************/
+@media screen and (min-width: 501px) {
+  .pricing__discount--short {
+    display: none;
+    visibility: hidden;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  body {
+    background-size: auto;
+  }
+  main {
+    margin: 2rem 0;
+  }
+  .pricing {
+    margin: 3rem 0.5rem 1rem;
+    min-width: unset;
+  }
+  .pricing__price_header {
+    font-size: .8rem;
+    margin-bottom: 1rem;
+  }
+  .pricing__billing_yearly_text::after {
+    content: '-25%';
+    width: 6ch;
+    margin-left: 4px;
+  }
+  .pricing__view_header, .pricing__price_header {
+    justify-content: center;
+    text-align: center;
+  }
+  .pricing__headings {
+    grid-template-columns: 1fr;
+    grid-template-areas: "views" "slider" "price";
+  }
+  .pricing__trial {
+    margin: 1rem auto 0px;
+  }
+  .pricing__footer {
+    flex-direction: column;
+  }
+}

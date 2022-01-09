@@ -1,0 +1,327 @@
+/*****************************************************
+                         VARS                           
+*****************************************************/
+$defaultBorder: 2rem;
+
+$softCyan: hsl(174, 77%, 80%);
+$strongCyan: hsl(174, 86%, 45%);
+$lightGrayishRed: hsl(14, 92%, 95%);
+$lightRed: hsl(15, 100%, 70%);
+$paleBlue: hsl(226, 100%, 87%);
+
+$white: hsl (0, 0%, 100%);
+$veryPaleBlue: hsl(230, 100%, 99%);
+$lightGrayishBlueSlider: hsl(224, 65%, 95%);
+$lightGrayishBlueToggleBackground: hsl(223, 50%, 87%);
+$grayishBlue: hsl(225, 20%, 60%);
+$darkDesaturedBlue: hsl(227, 35%, 25%);
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/*****************************************************
+                         HELPERS                           
+*****************************************************/
+.visible {
+    visibility: visible !important;
+}
+
+
+.bold {
+    font-weight: bold;
+}
+/*****************************************************
+                         MAIN STYLES                           
+*****************************************************/
+
+html {
+    height: 100%;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
+    margin: 0;
+    font-size: 15px;
+    background: url("../img/bg-pattern.svg") top left no-repeat $veryPaleBlue;
+    background-size: 100% auto;
+    font-family: "Manrope", sans-serif;
+}
+
+main {
+    width: fit-content;
+    flex-direction: column;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: url('./../img/pattern-circles.svg') center center;
+    background-repeat: no-repeat;
+    padding: 1.5rem 0;
+    h1 {
+        margin-bottom: 0;
+        font-weight: 800;
+    }
+    h2 {
+        color: $grayishBlue;
+        font-size: 0.8rem;
+    }
+}
+
+.pricing {
+    background: white;
+    min-width: 530px;
+    border-radius: .5rem;
+    margin: 2rem 1rem 1rem 1rem;
+    
+    box-shadow: 0 5px 10px 5px $lightGrayishBlueSlider;
+    &__headings {
+        color: $grayishBlue;
+        display: grid;
+        grid-template-areas: 
+        "views price"
+        "slider slider";
+
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 2rem;
+    }
+
+    &__slider {
+        grid-area: slider;
+        margin: 1rem 0 2.5rem;
+    }
+    &__range {
+        cursor: ew-resize;
+        -webkit-appearance: none;
+        appearance: none; 
+        background: $lightGrayishBlueSlider;
+        height: 7px;
+        border-radius: 1rem;
+        background: linear-gradient(
+            to right,
+            $softCyan 0%,
+            $softCyan 50%,
+            $lightGrayishBlueSlider 50%,
+            $lightGrayishBlueSlider 100%
+        );
+        &::-webkit-slider-thumb {
+            box-shadow: 0 4px 12px 0px $strongCyan;
+            appearance: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: url("../img/icon-slider.svg") no-repeat $strongCyan center center;
+            background-size: 55%;
+        }
+    }
+
+    &__toggle {
+        border-radius: 1rem;
+        background: $lightGrayishBlueSlider;
+        width: 40px;
+        height: 23px;
+        position: relative;
+        &::before {
+            content: "";
+            transition: 0.3s all ease-in-out;
+            display: block;
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: white;
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 10%;
+        }
+
+        &:hover {
+            cursor: pointer;
+        }
+        &.active {
+            background: $strongCyan;
+            &::before {
+                transition: 0.3s all ease-in-out;
+                left: 50%;
+            }
+        }
+
+    }
+
+    &__benefits {
+        list-style-image: url("./../img/icon-check.svg");
+        list-style-position: inside;
+        padding: 0;
+        color: $grayishBlue;
+        text-align: center;
+
+    }
+    &__range {
+        width: 100%;
+    }
+    &__trial {
+        display: flex;
+        justify-content: center;
+        color: $paleBlue;
+        background: $darkDesaturedBlue;
+        border: 0;
+        padding: 0.8rem 3rem;
+        border-radius: $defaultBorder;
+        font-weight: 600;
+        margin-left: auto;
+
+        &:hover {
+            cursor: pointer;
+            color: white;
+        }
+    }
+
+    &__billing {
+        justify-content: center;
+        color: $grayishBlue;
+        display: flex;
+        align-items: center;
+        font-size: 0.75rem;
+        position: relative;
+        margin-bottom: 2rem;
+        h3:nth-child(2) {
+            margin-left: auto;
+        }
+    }
+    &__price_header {
+        grid-area: price;
+        display: flex;
+        align-items: center;
+    }
+
+    &__view_header {
+        grid-area: views;
+        font-size: .9rem;
+        letter-spacing: 2px;
+    }
+    &__price {
+        color: $darkDesaturedBlue;
+        font-size: 2.5rem;
+        font-weight: 700;
+    }
+
+   
+
+    &__billing_text {
+        margin-left: auto;
+    }
+
+    &__billing_yearly_text {
+        position: relative;
+    }
+    &__billing_yearly_text::after {
+            content: '25% discount';
+            color: $lightRed;
+            background-color: $lightGrayishRed;
+            position: absolute;
+            border-radius: 1rem;
+            right: 2rem;
+            visibility: hidden;
+            padding: 2px 4px;
+            margin-left: 8px;
+            font-size: 0.7rem;
+            width: 13ch;
+            left: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            text-align: center;
+    }
+    &__billing_yearly_text.visible::after {
+        visibility: visible;
+    }
+    &__billing_type {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+    &__footer {
+        border-top: 2px solid $lightGrayishBlueSlider;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding-bottom: 2rem;
+        padding-top: 1rem;
+
+    }
+
+
+    &__headings, &__billing, &__footer {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+
+/*****************************************************
+                         BREAKPOINTS                           
+*****************************************************/
+
+
+@media screen and (min-width: 501px) {
+    .pricing {
+        &__discount--short {
+            display: none;
+            visibility: hidden;
+        }
+
+    }
+}
+
+@media screen and (max-width: 500px) {
+    body {
+        background-size: auto;
+    }
+    main {
+        margin: 2rem 0;
+    }
+    .pricing {
+        margin: 3rem 0.5rem 1rem;
+        min-width: unset;
+        &__price_header {
+            font-size: .8rem;
+            margin-bottom: 1rem;
+        }
+        &__billing_yearly_text::after {
+            content: '-25%';
+            width: 6ch;
+            margin-left: 4px;
+            
+    }
+        &__view_header, &__price_header {
+            justify-content: center;
+            text-align: center;
+        }
+
+
+        &__headings {
+            grid-template-columns: 1fr;
+            grid-template-areas:
+            "views"
+            "slider"
+            "price";
+
+            
+        }
+        &__trial {
+            margin: 1rem auto 0px;
+        }
+        
+        &__footer {
+            flex-direction: column;
+        }
+
+    }
+}
