@@ -144,7 +144,7 @@ header h2 {
   list-style-position: inside;
   padding: 0;
   color: #858fad;
-  text-align: center;
+  text-align: left;
 }
 
 .pricing__range {
@@ -274,6 +274,9 @@ header h2 {
   .pricing__price_header {
     font-size: .8rem;
     margin-bottom: 1rem;
+  }
+  .pricing__benefits {
+    text-align: center;
   }
   .pricing__billing_yearly_text::after {
     content: '-25%';

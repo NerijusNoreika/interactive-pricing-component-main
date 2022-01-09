@@ -161,7 +161,7 @@ header {
         list-style-position: inside;
         padding: 0;
         color: $grayishBlue;
-        text-align: center;
+        text-align: left;
 
     }
     &__range {
@@ -293,6 +293,10 @@ header {
         &__price_header {
             font-size: .8rem;
             margin-bottom: 1rem;
+        }
+
+        &__benefits {
+            text-align: center;
         }
         &__billing_yearly_text::after {
             content: '-25%';
